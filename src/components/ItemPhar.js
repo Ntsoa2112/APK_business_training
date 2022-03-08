@@ -1,5 +1,5 @@
 import React from 'react'
-import { SafeAreaView,StyleSheet,View,Text,TouchableOpacity,Image} from 'react-native'
+import { SafeAreaView,StyleSheet,View,Text,TouchableOpacity,Image,Pressable} from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
@@ -15,31 +15,36 @@ class ItemPhar extends React.Component {
   render() {
     const {pharmacie,navigation} = this.props
     const star =[1,2,3,4,5]
-    
+    console.log()
     return (
-        <TouchableOpacity style={styles.main_container} onPress={()=>navigation.navigate('DetailCategorie',{
-          id:pharmacie.id,
-          nomPharmacie:pharmacie.nom
-        })}>
+
+        <Pressable style={styles.main_container} >
             <Image
               style={styles.image}
-              source={{uri: pharmacie.image}}
+              source={{uri:pharmacie.image}}
             />
             <View style={styles.content_container}>
               <View style={styles.header_container}>
                   <Text style={styles.title_text}numberOfLines={4}>{pharmacie.nom}</Text>
               </View>
               <View style={styles.description_container}>
-                  <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="map-marker-alt" color="tomato" size={26} />  {pharmacie.lieu}</Text>
+                <Pressable style={styles.shad} onPress={()=>navigation.navigate('DetailCategorie',{
+                    id:pharmacie.id,
+                    nomPharmacie:pharmacie.nom
+                  })}>
+                    <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="inbox" color="tomato" size={26} />  Cours</Text>
+                </Pressable>
               </View>
-              <View style={styles.description_container_2}>
-                  {
-                    star.map((item)=><Ionicons name={item <= pharmacie.notation ? 'star-sharp' :'star-outline'} key={item} color="gold" size={20} />)
-                    
-                  }
+              <View style={styles.description_container}>
+                <Pressable style={styles.shad} onPress={()=>navigation.navigate('DetailCategorie',{
+                    id:pharmacie.id,
+                    nomPharmacie:pharmacie.nom
+                  })}>
+                    <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="ellipsis-h" color="tomato" size={26} />  Détails</Text>
+                </Pressable>
               </View>
             </View>
-        </TouchableOpacity>
+        </Pressable>
     )
   }
 }
@@ -48,7 +53,8 @@ const styles = StyleSheet.create({
     height: 115,
     flexDirection: 'row',
     backgroundColor:'white',
-    marginBottom:10,
+    marginBottom:20,
+    marginTop: 20,
     borderRadius:10,
     marginLeft:5,
     marginRight:5,
@@ -77,7 +83,7 @@ const styles = StyleSheet.create({
   },
   title_text: {
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 18,
     flex: 1,
     flexWrap: 'wrap',
     color:'black',
@@ -92,11 +98,23 @@ const styles = StyleSheet.create({
   },
   description_text: {
     fontStyle: 'italic',
-    color: '#666666'
+    color: '#666666',
+    fontWeight: 'bold',
+    fontSize: 16
   },
   bold:{
     fontWeight:'bold',
     color:'#058B12'
+  },
+  shad:{
+    shadowColor: '#470000',
+    shadowOffset: {width: 1, height: 1},
+    shadowOpacity: 0.5,
+    shadowRadius:5,
+    elevation: 4,
+    backgroundColor: "#EEF3F3",
+    width: 100,
+    marginTop:2
   }
   
 })

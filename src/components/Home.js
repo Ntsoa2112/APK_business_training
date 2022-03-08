@@ -65,10 +65,10 @@ class Home extends React.Component {
         width:140,
         height:80,
         marginLeft: 30,
-        route:'Forum',
-        routeName:'Forum',
-        title:langue[this.props.langue].forum,
-        innerTitle:langue[this.props.langue].forum_desk,
+        route:'MesCours',
+        routeName:'MesCours',
+        title:langue[this.props.langue].mesCours,
+        innerTitle:langue[this.props.langue].mesCours_desk,
         image:require('../../assets/inscription.jpg')
       }
     ]

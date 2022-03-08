@@ -13,7 +13,7 @@ import langue from '../service/MultiLangue'
 import DetailCategorie from '../components/DetailCategorie'
 import Accueil from '../components/Accueil'
 import Module from '../components/Module'
-import Forum from '../components/Forum'
+import MesCours from '../components/MesCours'
 
  const headerStyle = {
     headerStyle: {
@@ -51,7 +51,7 @@ class Navigation extends React.Component {
               headerShown:true,...headerStyle})}/>
             <Stack.Screen name="Module" component={Module} options={({route}) =>({
               headerShown:true,...headerStyle})}/>
-            <Stack.Screen name="Forum" component={Forum} options={({route}) =>({
+            <Stack.Screen name="MesCours" component={MesCours} options={({route}) =>({
               headerShown:true,...headerStyle})}/>
             <Stack.Screen name="Menu" component={Menu} options={{headerShown:false}} />
             <Stack.Screen name="Started" component={Started} options={{headerShown:false}} />

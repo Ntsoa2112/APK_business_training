@@ -206,7 +206,6 @@ class Login extends React.Component {
                                     maxLength={16}
                                     onChangeText={(text)=>this.verifierPassword(text)}
                                     secureTextEntry={true}
-                                    value={this.state.password}
                                     placeholder="Mot de passe"
                                   />
                                 {this.state.errorMdp ? <Text style={styles.error}>{this.state.MsgErrorPsd}</Text> : null}
@@ -219,12 +218,8 @@ class Login extends React.Component {
                     </View>
                     )
                   }
-                    
-                
                 </ScrollView>
-             
             </ImageBackground>
-           
         </SafeAreaView>
     )
   }

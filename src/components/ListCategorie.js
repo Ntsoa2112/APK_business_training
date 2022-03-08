@@ -36,13 +36,18 @@ class Search extends React.Component {
   getItems =(condition)=>{
     if(condition){
       let donnee = [
-        {"id":1,"nom":" Categ 1",
-        "lieu":"Niv 1","image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsYI-pH6EULb2F4Uufej3DC5YGRwXDLhGmnw&usqp=CAU",
+        {"id":1,"nom":"Informatique",
+        "lieu":"Cours","image":"https://img.myloview.fr/images/dessin-anime-de-reseau-informatique-700-143321403.jpg",
         "date_created":"2021-11-09T08:03:11.000Z","date_updated":"2021-11-11T18:15:12.000Z",
         "longitude":"47.525228882622166","latitude":"-18.90633554528606",
         "parking":"001","bus":"192,145,178,156","arret":"Galaxy","notation":4,"contact":"0340921107"},
-        {"id":2,"nom":"Categ 2","lieu":"Niv 1",
-        "image":"https://kinsta.com/fr/wp-content/uploads/sites/4/2021/01/formulaire-inscription-wordpress.png",
+        {"id":2,"nom":"Gestion","lieu":"Niv 1",
+        "image":"https://www.iena-consulting.com/wp-content/uploads/2016/11/logiciel-gestion-cloud.jpg",
+        "date_created":"2021-11-09T08:03:43.000Z","date_updated":"2021-11-11T18:15:18.000Z",
+        "longitude":"47.522416220844356","latitude":"-18.90530173538965","parking":"000",
+        "bus":"192,145,178,156","arret":"Galaxy","notation":5,"contact":"0331235173"},
+        {"id":2,"nom":"Communication","lieu":"Niv 1",
+        "image":"https://www.idealco.fr/image/formation/14659.jpg?v\u003d1607954037",
         "date_created":"2021-11-09T08:03:43.000Z","date_updated":"2021-11-11T18:15:18.000Z",
         "longitude":"47.522416220844356","latitude":"-18.90530173538965","parking":"000",
         "bus":"192,145,178,156","arret":"Galaxy","notation":5,"contact":"0331235173"}
@@ -53,48 +58,11 @@ class Search extends React.Component {
       })
     }
   }
-  sendSearch(condition){
-    if(condition){
-      const extractUrl = this.props.route.params.routeName == 'Pharmacie'?'pharmacie':'medcin'
-      this.setState({
-        isLoading:true
-      })
-      axios.post(http + '/' + extractUrl + '/search',{
-        critere:this.state.critere
-      })
-      .then((res)=>{
-        if(res.data){
-          this.setState({
-            items:res.data,
-            isLoading:false
-          })
-        }
-      })
-      .catch((error)=>{
-        this.setState({
-          isLoading:false
-        })
-        console.log(error)
-      })
-    }
-  }
+
   render() {
     
     return (
         <SafeAreaView style={styles.main_container}>
-          <View style={styles.main_barSearch}>
-            <View style={styles.container_bar}>
-              <TextInput
-                style={styles.TextInput}
-                value={this.state.critere}
-                onChangeText={(text)=>this.getCritere(text)}
-                onSubmitEditing={()=>this.sendSearch(this.state.critere)}
-                value={this.state.critere}
-                placeholder={langue[this.props.langue].recherche}
-                right={<TextInput.Icon name="search-web" onPress={()=>this.sendSearch(this.state.critere)} color="#888" style={styles.Icon} size={35}/>}
-              />
-            </View>
-          </View>
           <View style={styles.main_list}>
           {
             this.state.isLoading ? <DisplayLoading isLoading={this.state.isLoading}/> : <FlatList
@@ -104,7 +72,6 @@ class Search extends React.Component {
               renderItem={({item}) => <ItemPhar pharmacie={item} navigation={this.props.navigation}/>}
             />
           }
-            
           </View>
         </SafeAreaView>
     )
