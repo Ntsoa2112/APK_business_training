@@ -13,7 +13,7 @@ import langue from '../service/MultiLangue'
 import DetailCategorie from '../components/DetailCategorie'
 import Accueil from '../components/Accueil'
 import Module from '../components/Module'
-import MesCours from '../components/MesCours'
+import Cours from '../components/Cours'
 import Login from '../components/Login'
 
  const headerStyle = {
@@ -51,6 +51,8 @@ class Navigation extends React.Component {
             <Stack.Screen name="Accueil" component={Accueil} options={({route}) =>({
               headerShown:true,...headerStyle})}/>
             <Stack.Screen name="Module" component={Module} options={({route}) =>({
+              headerShown:true,...headerStyle})}/>
+            <Stack.Screen name="Cours" component={Cours} options={({route}) =>({
               headerShown:true,...headerStyle})}/>
             <Stack.Screen name="MesCours" component={Login} options={({route}) =>({
               headerShown:true,...headerStyle})}/>

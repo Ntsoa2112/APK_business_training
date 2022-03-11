@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     color:'#058B12',
     marginTop:10,
     marginLeft:5,
-    fontSize:20,
+    fontSize:19,
     fontWeight:'bold'
   },
   innerTitle:{

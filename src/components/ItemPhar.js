@@ -28,20 +28,29 @@ class ItemPhar extends React.Component {
                   <Text style={styles.title_text}numberOfLines={4}>{data.nom}</Text>
               </View>
               <View style={styles.description_container}>
-                <Pressable style={styles.shad} onPress={()=>navigation.navigate('Module',{
-                    id:data.id,
-                    nomdata:data.nom,
-                    routeName:data.nom
-                  })}>
+                
                     {
                     data.type? (
+                      <Pressable style={styles.shad} onPress={()=>navigation.navigate('Cours',{
+                        id:data.id,
+                        nomdata:data.nom,
+                        routeName:data.nom,
+                        data: data,
+                      })}>
                       <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="inbox" color="tomato" size={26} />  Planning</Text>
-                    ):(
-                      <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="inbox" color="tomato" size={26} />  Cours</Text>
+                      </Pressable>
+                      ):(
+                      <Pressable style={styles.shad} onPress={()=>navigation.navigate('Module',{
+                        id:data.id,
+                        nomdata:data.nom,
+                        routeName:data.nom
+                      })}>
+                        <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="inbox" color="tomato" size={26} />  Cours</Text>
+                      </Pressable>
                     )
                     }
                     
-                </Pressable>
+                
               </View>
               <View style={styles.description_container}>
                 <Pressable style={styles.shad} onPress={()=>navigation.navigate('DetailCategorie',{

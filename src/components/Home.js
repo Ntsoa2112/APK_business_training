@@ -165,9 +165,9 @@ const styles = StyleSheet.create({
   },
   image_logo:{
     width:100,
-    height:40,
+    height:60,
     marginLeft:10,
-    marginTop:30,
+    marginTop:20,
   },
   title_logo:{
     flex:6,
