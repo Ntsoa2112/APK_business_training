@@ -22,3 +22,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+//https://expo.dev/artifacts/33a9d592-38eb-4218-ba0f-057a527341f5
