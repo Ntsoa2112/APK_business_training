@@ -93,7 +93,6 @@ class Login extends React.Component {
     this.setState({
       password:mdp
     })
-    
   }
 
 
@@ -146,7 +145,7 @@ class Login extends React.Component {
     this.props.dispatch(action)
   }
   render() {
-    
+    console.log(this.props.route.params.id)
     return (
         <SafeAreaView style={styles.SafeAreaView}>
             
@@ -170,7 +169,7 @@ class Login extends React.Component {
                                     <Text style={styles.boxText}>BUSINESS TRAINING</Text>
                                 </View>
                                 <View style={styles.Innerbox_2}>
-                                    <Text style={styles.boxText_2}>Fandrosoana ho an'ny rehetra </Text>
+                                    <Text style={styles.boxText_2}>{this.props.route.params.nomdata} </Text>
                                 </View>
                             </View>
                         </View>
@@ -185,34 +184,44 @@ class Login extends React.Component {
                             <View style={styles.Innerbox_3}>
                                 <View style={styles.line}></View >
                                 <View style={styles.connexion}>
-                                    <Text style={styles.boxText_3}>CONNECTEZ-VOUS</Text>
+                                    <Text style={styles.boxText_3}>INSCRIVEZ-VOUS</Text>
                                 </View>
                                 <View style={styles.line}></View>
                             </View >
-                            <View style={styles.innersection}>
-                              <TextInput
-                                  style={[styles.input,{borderColor:this.state.borderColor_tel}]}
-                                  onChangeText={(text)=>this.verifierTelephone(text)}
-                                  value={this.state.telephone}
-                                  maxLength={10}
-                                  placeholder="Telephone"
-                                  keyboardType="numeric"
-                              />
-                              {this.state.errorTel ? <Text style={styles.error}>{this.state.MsgErrorTel}</Text> : null}
-                              <TextInput
-                                    style={[styles.input,{borderColor:this.state.borderColor_psd}]}
-                                    value={this.state.password}
-                                    maxLength={16}
-                                    onChangeText={(text)=>this.verifierPassword(text)}
-                                    secureTextEntry={true}
-                                    placeholder="Mot de passe"
-                                  />
-                                {this.state.errorMdp ? <Text style={styles.error}>{this.state.MsgErrorPsd}</Text> : null}
+                            {this.props.route.params.id ? 
+                              <View style={styles.innersection}>
+                                <TextInput
+                                    style={[styles.input,{borderColor:this.state.borderColor_tel}]}
+                                    onChangeText={(text)=>this.verifierTelephone(text)}
+                                    value={this.state.telephone}
+                                    maxLength={10}
+                                    placeholder="Telephone"
+                                    keyboardType="numeric"
+                                />
+                                {this.state.errorTel ? <Text style={styles.error}>{this.state.MsgErrorTel}</Text> : null}
+                                <TextInput
+                                      style={[styles.input,{borderColor:this.state.borderColor_psd}]}
+                                      value={this.state.password}
+                                      maxLength={16}
+                                      onChangeText={(text)=>this.verifierPassword(text)}
+                                      secureTextEntry={true}
+                                      placeholder="Mot de passe"
+                                    />
+                                  {this.state.errorMdp ? <Text style={styles.error}>{this.state.MsgErrorPsd}</Text> : null}
 
-                                <TouchableOpacity style={styles.card} onPress={()=>this.HandleLogin()}>
-                                  <Text style={styles.boxText_3}>SE CONNECTER</Text>
-                                </TouchableOpacity>
-                            </View>
+                                  <TouchableOpacity style={styles.card} onPress={()=>this.HandleLogin()}>
+                                    <Text style={styles.boxText_3}>SE CONNECTER</Text>
+                                  </TouchableOpacity>
+                              </View>
+                              :
+                              <View style={styles.section_1}>
+                                  <View style={styles.box}>
+                                      <View style={styles.Innerbox_2}>
+                                          <Text style={styles.boxText_2}>Vous devez sélectionner un cours</Text>
+                                      </View>
+                                  </View>
+                              </View>
+                              }
                         </View>
                     </View>
                     )

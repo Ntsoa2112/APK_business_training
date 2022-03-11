@@ -11,6 +11,7 @@ class Accueil extends React.Component {
     
   }
   render() {
+    const navigation = this.props.navigation
     return (
         <SafeAreaView>
             <View style={styles.main}>
@@ -25,17 +26,32 @@ class Accueil extends React.Component {
                   <Text style={styles.sous_title}>L’application permet de s’inscrire à la formation continue sur les domaines suivantes tels que:</Text>
                   <View style={styles.btn}>
                     <View style={styles.buttonView}>
-                      <Button
+                      <Button 
+                        onPress={()=>navigation.navigate('Module',{
+                          id:1,
+                          nomdata:"Informatique",
+                          routeName:"Informatique"
+                        })}
                         title="INFORMATIQUE"
                       />
                     </View>
                     <View style={styles.buttonView}>
                       <Button
+                        onPress={()=>navigation.navigate('Module',{
+                          id:1,
+                          nomdata:"Gestion",
+                          routeName:"Gestion"
+                        })}
                         title="GESTION"
                       />
                     </View>
                     <View style={styles.buttonView}>
                       <Button
+                        onPress={()=>navigation.navigate('Module',{
+                          id:1,
+                          nomdata:"Communication",
+                          routeName:"Communication"
+                        })}
                         title="COMMUNICATION"
                       />
                     </View>

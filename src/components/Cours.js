@@ -17,10 +17,13 @@ class Cours extends React.Component {
     })
   }
   render() {
+    console.log("id : " +this.state.items.id);
+    const navigation = this.props.navigation
     return (
         <SafeAreaView>
             <View style={styles.cardTitle}>
-                <Text style={styles.title}>Planning</Text>
+                <Text style={[styles.title, styles.grand_title]}>Planning </Text>
+                <Text style={styles.title}>{this.state.items.nom}</Text>
             </View>
             
             <View style={styles.calendar}>
@@ -30,6 +33,12 @@ class Cours extends React.Component {
             </View>
             <View style={styles.buttonView}>
               <Button
+                onPress={()=>navigation.navigate('MesCours',{
+                  id:this.state.items.id,
+                  nomdata:this.state.items.nom,
+                  routeName:this.state.items.nom,
+                  data: this.state.items,
+                })}
                 title="Inscription"
               />
             </View>
@@ -46,6 +55,9 @@ const styles = StyleSheet.create({
     color:'#000',
     fontSize:18
   },
+  grand_title:{
+    fontSize: 20
+  },
   calendar:{
       marginTop:20
   },
@@ -56,8 +68,11 @@ const styles = StyleSheet.create({
     marginTop:20
   },
   buttonView: {
-    width: '50%',
     padding: 10,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop:20
   },
 })
 export default Cours

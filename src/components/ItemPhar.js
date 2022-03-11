@@ -37,7 +37,7 @@ class ItemPhar extends React.Component {
                         routeName:data.nom,
                         data: data,
                       })}>
-                      <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="inbox" color="tomato" size={26} />  Planning</Text>
+                      <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="calendar" color="green" size={26} />  Planning</Text>
                       </Pressable>
                       ):(
                       <Pressable style={styles.shad} onPress={()=>navigation.navigate('Module',{
@@ -45,7 +45,7 @@ class ItemPhar extends React.Component {
                         nomdata:data.nom,
                         routeName:data.nom
                       })}>
-                        <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="inbox" color="tomato" size={26} />  Cours</Text>
+                        <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="inbox" color="green" size={26} />  Cours</Text>
                       </Pressable>
                     )
                     }
@@ -58,7 +58,7 @@ class ItemPhar extends React.Component {
                     nomdata:data.nom,
                     data: data
                   })}>
-                  <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="ellipsis-h" color="tomato" size={26} />  Détails</Text>
+                  <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="ellipsis-h" color="green" size={26} />  Détails</Text>
                     
                 </Pressable>
               </View>
