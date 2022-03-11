@@ -8,10 +8,6 @@ class Notification extends React.Component {
     this.state = {
     }
   }
-  componentDidMount(){
-    console.log(this.props.route.name)
-    
-  }
   render() {
     return (
         <SafeAreaView>

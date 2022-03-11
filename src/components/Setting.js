@@ -11,9 +11,6 @@ class Setting extends React.Component {
      
     }
   }
-  componentDidMount(){
-    console.log(this.props)
-  }
   changeLangue =(lang)=>{
     const langue ={
       langue:lang

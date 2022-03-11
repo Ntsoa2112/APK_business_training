@@ -12,7 +12,9 @@ class Login extends React.Component {
     super(props)
     this.state = {
         telephone:null,
-        password:'',
+        nom:null,
+        prenom:null,
+        email:null,
         MsgErrorPsd:'',
         MsgErrorTel:'',
         borderColor_psd:null,
@@ -27,116 +29,27 @@ class Login extends React.Component {
  componentDidMount(){
   this.setState({
     showError:false,
-    telephone:null,
-    password:'',
   })
  }
-  verifierPassword=(mdp)=>{
-    let msg = ''
-    let regexMdp=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{6,16}$/;
-    if(mdp == ''){
-      msg = 'Veuillez entrer votre mot de passe!!'
-      this.setMsgErrorPsd(msg)
-    }else if(mdp.length<6 ||!regexMdp.test(mdp)){
-       msg = 'Veuillez tapez au moins 6 caractères dont au moins une lettre minuscule et une lettre majuscule, un caractère spécial et un chiffre!!'
-      this.setMsgErrorPsd(msg)
-    }else{
-      this.setState({
-        errorMdp:false,
-        borderColor_psd:'white'
-      })
-    }
-    this.setPassword(mdp)
-  }
-  verifierTelephone =(tel)=>{
-    let msg = ''
-    let regexTel = /[034\?032\?033]{3}/g
-    if(tel == ''){
-      msg = 'Veuillez entrer votre numero de telephone!!'
-      this.setMsgErrorTel(msg)
-    }else if(tel.length<10 || !regexTel.test(tel.slice(0,3))){
-     
-      msg = 'Veuillez entrer le numero de telephone valide!!'
-      this.setMsgErrorTel(msg)
-    }else{
-      this.setState({
-        errorTel:false,
-        borderColor_tel:'white',
-      })
-    }
-    this.setTelephone(tel)
-  }
- 
-
-  setMsgErrorTel = (mesg)=>{
-    if(mesg){
-      this.setState({
-        errorTel:true,
-        borderColor_tel:'tomato',
-        MsgErrorTel:mesg,
-      })
-    }
-  }
-
-  setMsgErrorPsd = (mesg)=>{
-    if(mesg){
-      this.setState({
-        errorMdp:true,
-        borderColor_psd:'tomato',
-        MsgErrorPsd:mesg,
-      })
-    }
-  }
-
-
-  setPassword =(mdp)=>{
-    this.setState({
-      password:mdp
-    })
-  }
-
-
-  setTelephone =(tel)=>{
-    this.setState({
-      telephone:tel
-    })
-  }
 
   HandleLogin =()=>{
-    if(!this.state.errorMdp && !this.state.errorTel && this.state.telephone && this.state.password){
+    if(this.state.nom && this.state.prenom && this.state.telephone && this.state.email){
+      const user ={
+        nom: this.state.nom,
+        prenom: this.state.prenom,
+        email: this.state.email,
+        telephone: this.state.telephone
+      }
+      const action = { type: "CHANGE_CONNEXION", value:user}
+      this.props.dispatch(action)
 
-      axios.post(http + '/user/login',{
-        phone:this.state.telephone,
-        password:this.state.password
-      }) 
-      .then((res)=>{
-        if(res.data){
-          const user ={
-            ...res.data,
-            logging:true
-          }
-          const action = { type: "CHANGE_CONNEXION", value:user}
-          this.props.dispatch(action)
-
-          this.props.navigation.navigate('Menu',{
-            screen:'Acueill'
-          })
-        }
-      })
-      .then(()=>{
-        /*this.setState({
-          showError:true
-        })*/
+      this.props.navigation.navigate('Menu',{
+        screen:'Acueill'
       })
     }
 
   }
   
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.user !== this.props.user) {
-      console.log('pokemons state has changed.')
-    }
-  }
   Logout =()=>{
     const user ={
       logging:false
@@ -145,7 +58,6 @@ class Login extends React.Component {
     this.props.dispatch(action)
   }
   render() {
-    console.log(this.props.route.params.id)
     return (
         <SafeAreaView style={styles.SafeAreaView}>
             
@@ -179,7 +91,7 @@ class Login extends React.Component {
                               marginTop:-15,textAlign:'center',
                               paddingBottom:10
                               }}>
-                                Veuillez verifier votre telephone ou mot de passe!!! 
+                                Veuillez verifier votre informations!!! 
                               </Text> : null}
                             <View style={styles.Innerbox_3}>
                                 <View style={styles.line}></View >
@@ -191,26 +103,47 @@ class Login extends React.Component {
                             {this.props.route.params.id ? 
                               <View style={styles.innersection}>
                                 <TextInput
-                                    style={[styles.input,{borderColor:this.state.borderColor_tel}]}
-                                    onChangeText={(text)=>this.verifierTelephone(text)}
-                                    value={this.state.telephone}
-                                    maxLength={10}
-                                    placeholder="Telephone"
-                                    keyboardType="numeric"
+                                    style={[styles.input]}
+                                    onChangeText={(text)=>this.setState({
+                                      nom:text
+                                    })}
+                                    value={this.state.nom}
+                                    maxLength={50}
+                                    placeholder="Nom"
                                 />
-                                {this.state.errorTel ? <Text style={styles.error}>{this.state.MsgErrorTel}</Text> : null}
+                                
                                 <TextInput
-                                      style={[styles.input,{borderColor:this.state.borderColor_psd}]}
-                                      value={this.state.password}
-                                      maxLength={16}
-                                      onChangeText={(text)=>this.verifierPassword(text)}
-                                      secureTextEntry={true}
-                                      placeholder="Mot de passe"
-                                    />
-                                  {this.state.errorMdp ? <Text style={styles.error}>{this.state.MsgErrorPsd}</Text> : null}
-
+                                  style={[styles.input,{borderColor:this.state.borderColor_psd}]}
+                                  value={this.state.prenom}
+                                  maxLength={50}
+                                  onChangeText={(text)=>this.setState({
+                                    prenom:text
+                                  })}
+                                  placeholder="Prènom"
+                                />
+                              
+                              <TextInput
+                                  style={[styles.input,{borderColor:this.state.borderColor_psd}]}
+                                  value={this.state.telephone}
+                                  maxLength={50}
+                                  onChangeText={(text)=>this.setState({
+                                    telephone:text
+                                  })}
+                                  placeholder="Télèphone"
+                                  keyboardType="numeric"
+                                />
+                                
+                                <TextInput
+                                  style={[styles.input,{borderColor:this.state.borderColor_psd}]}
+                                  value={this.state.email}
+                                  maxLength={50}
+                                  onChangeText={(text)=>this.setState({
+                                    email:text
+                                  })}
+                                  placeholder="Email"
+                                />
                                   <TouchableOpacity style={styles.card} onPress={()=>this.HandleLogin()}>
-                                    <Text style={styles.boxText_3}>SE CONNECTER</Text>
+                                    <Text style={styles.boxText_3}>S'INSCRIRE</Text>
                                   </TouchableOpacity>
                               </View>
                               :
@@ -250,7 +183,7 @@ const styles = StyleSheet.create({
   },
   section_1: {
     flex:1,
-    paddingTop: windowHeight/8,
+    paddingTop: windowHeight/40,
     alignContent: 'center',
   },
   box:{
@@ -260,8 +193,8 @@ const styles = StyleSheet.create({
   Innerbox:{
     marginLeft: windowWidth/5,
     width:(windowWidth*3)/5,
-    height:windowHeight/8,
-    padding: 7,
+    height:windowHeight/12,
+    padding: 4,
     borderWidth: 1,
     borderColor: "#058B12",
     backgroundColor:'#5B2C6F',
@@ -269,7 +202,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   boxText:{
-    fontSize: windowHeight/30,
+    fontSize: windowHeight/35,
     color:"white",
     textAlign:'center',
     fontWeight: 'bold',

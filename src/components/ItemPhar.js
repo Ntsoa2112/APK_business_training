@@ -15,7 +15,6 @@ class ItemPhar extends React.Component {
   render() {
     const {data,navigation} = this.props
     const star =[1,2,3,4,5]
-    console.log()
     return (
 
         <Pressable style={styles.main_container} >

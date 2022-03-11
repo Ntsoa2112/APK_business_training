@@ -17,7 +17,6 @@ class Cours extends React.Component {
     })
   }
   render() {
-    console.log("id : " +this.state.items.id);
     const navigation = this.props.navigation
     return (
         <SafeAreaView>

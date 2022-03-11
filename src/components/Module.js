@@ -101,7 +101,7 @@ class Module extends React.Component {
           '2022-04-02': {selected: true, marked: true, selectedColor: 'blue'}
         }}
       ]
-      console.log(condition)
+
       if(condition != 'Module'){
         let list = donnee
         donnee = []
