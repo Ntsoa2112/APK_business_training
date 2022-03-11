@@ -3,10 +3,7 @@ import { SafeAreaView,StyleSheet,View,Text,TouchableOpacity,Dimensions,FlatList,
 import { connect } from 'react-redux'
 import langue from '../service/MultiLangue'
 import DisplayLoading from './DisplayLoading';
-import { TextInput } from 'react-native-paper';
 import ItemPhar from './ItemPhar'
-import http from '../service/http'
-import axios from 'axios'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -23,8 +20,8 @@ class Search extends React.Component {
   }
   
   componentDidMount(){
-    const extractUrl = this.props.route.params.routeName ? this.props.route.params.routeName : ''  
-    this.getItems(extractUrl)
+    const extract = this.props.route.params.routeName ? this.props.route.params.routeName : ''  
+    this.getItems(extract)
   }
 
   getCritere =(critere)=>{
@@ -37,19 +34,19 @@ class Search extends React.Component {
     if(condition){
       let donnee = [
         {"id":1,"nom":"Informatique",
-        "lieu":"Cours","image":"https://img.myloview.fr/images/dessin-anime-de-reseau-informatique-700-143321403.jpg",
+        "lieu":"Analakely","image":"https://img.myloview.fr/images/dessin-anime-de-reseau-informatique-700-143321403.jpg",
         "date_created":"2021-11-09T08:03:11.000Z","date_updated":"2021-11-11T18:15:12.000Z",
-        "longitude":"47.525228882622166","latitude":"-18.90633554528606",
+        "description":"Apprendre la base de l’informatique, prendre des cours de robotique et de langage machine ou tout simplement comprendre les bases du traitement de texte ou naviguer sur Internet, développez votre expertise en informatique grâce aux conseils de Superprof !",
         "parking":"001","bus":"192,145,178,156","arret":"Galaxy","notation":4,"contact":"0340921107"},
-        {"id":2,"nom":"Gestion","lieu":"Niv 1",
+        {"id":2,"nom":"Gestion","lieu":"Ankatso",
         "image":"https://www.iena-consulting.com/wp-content/uploads/2016/11/logiciel-gestion-cloud.jpg",
         "date_created":"2021-11-09T08:03:43.000Z","date_updated":"2021-11-11T18:15:18.000Z",
-        "longitude":"47.522416220844356","latitude":"-18.90530173538965","parking":"000",
+        "description":"La gestion de la relation client (CRM) est une technologie permettant de gérer toutes les relations et interactions de votre entreprise avec les clients et les clients potentiels. L’objectif est simple : Améliorer les relations commerciales pour développer votre entreprise.","parking":"000",
         "bus":"192,145,178,156","arret":"Galaxy","notation":5,"contact":"0331235173"},
-        {"id":2,"nom":"Communication","lieu":"Niv 1",
+        {"id":2,"nom":"Communication","lieu":"Andravohangy",
         "image":"https://www.idealco.fr/image/formation/14659.jpg?v\u003d1607954037",
         "date_created":"2021-11-09T08:03:43.000Z","date_updated":"2021-11-11T18:15:18.000Z",
-        "longitude":"47.522416220844356","latitude":"-18.90530173538965","parking":"000",
+        "description":"Peu de gens ont totalement confiance dans toutes les situations de relation à l’autre. La communication interpersonnelle est un art qui demande de l’entraînement et beaucoup de conscience. Être en mesure d’engager une conversation, de la maintenir et de la conclure s’avère une compétence très utile, au travail, en amour ou dans la vie de tous les jours.","parking":"000",
         "bus":"192,145,178,156","arret":"Galaxy","notation":5,"contact":"0331235173"}
       ]
       this.setState({
@@ -69,7 +66,7 @@ class Search extends React.Component {
               style={{flex:1}}
               data={this.state.items}
               keyExtractor={(item) =>{if(item){return item.id.toString()}} }
-              renderItem={({item}) => <ItemPhar pharmacie={item} navigation={this.props.navigation}/>}
+              renderItem={({item}) => <ItemPhar data={item} navigation={this.props.navigation}/>}
             />
           }
           </View>

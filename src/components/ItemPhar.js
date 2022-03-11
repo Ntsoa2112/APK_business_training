@@ -13,7 +13,7 @@ class ItemPhar extends React.Component {
   
  //star-outline
   render() {
-    const {pharmacie,navigation} = this.props
+    const {data,navigation} = this.props
     const star =[1,2,3,4,5]
     console.log()
     return (
@@ -21,26 +21,36 @@ class ItemPhar extends React.Component {
         <Pressable style={styles.main_container} >
             <Image
               style={styles.image}
-              source={{uri:pharmacie.image}}
+              source={{uri:data.image}}
             />
             <View style={styles.content_container}>
               <View style={styles.header_container}>
-                  <Text style={styles.title_text}numberOfLines={4}>{pharmacie.nom}</Text>
+                  <Text style={styles.title_text}numberOfLines={4}>{data.nom}</Text>
               </View>
               <View style={styles.description_container}>
-                <Pressable style={styles.shad} onPress={()=>navigation.navigate('DetailCategorie',{
-                    id:pharmacie.id,
-                    nomPharmacie:pharmacie.nom
+                <Pressable style={styles.shad} onPress={()=>navigation.navigate('Module',{
+                    id:data.id,
+                    nomdata:data.nom,
+                    routeName:data.nom
                   })}>
-                    <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="inbox" color="tomato" size={26} />  Cours</Text>
+                    {
+                    data.type? (
+                      <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="inbox" color="tomato" size={26} />  Planning</Text>
+                    ):(
+                      <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="inbox" color="tomato" size={26} />  Cours</Text>
+                    )
+                    }
+                    
                 </Pressable>
               </View>
               <View style={styles.description_container}>
                 <Pressable style={styles.shad} onPress={()=>navigation.navigate('DetailCategorie',{
-                    id:pharmacie.id,
-                    nomPharmacie:pharmacie.nom
+                    id:data.id,
+                    nomdata:data.nom,
+                    data: data
                   })}>
-                    <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="ellipsis-h" color="tomato" size={26} />  Détails</Text>
+                  <Text style={styles.description_text} numberOfLines={2}><FontAwesome5 name="ellipsis-h" color="tomato" size={26} />  Détails</Text>
+                    
                 </Pressable>
               </View>
             </View>
@@ -50,7 +60,7 @@ class ItemPhar extends React.Component {
 }
 const styles = StyleSheet.create({
   main_container: {
-    height: 115,
+    height: 140,
     flexDirection: 'row',
     backgroundColor:'white',
     marginBottom:20,

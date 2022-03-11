@@ -14,6 +14,7 @@ import DetailCategorie from '../components/DetailCategorie'
 import Accueil from '../components/Accueil'
 import Module from '../components/Module'
 import MesCours from '../components/MesCours'
+import Login from '../components/Login'
 
  const headerStyle = {
     headerStyle: {
@@ -46,17 +47,17 @@ class Navigation extends React.Component {
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Started"  screenOptions={{headerMode: 'screen',tabBarColor:'#058B12'}}>
             <Stack.Screen name="Categorie" component={ListCategorie} options={({route}) =>({
-              headerShown:true,...headerStyle,title: langue[lang].liste_pharmacie})}/>
+              headerShown:true,...headerStyle,title: langue[lang].liste_data})}/>
             <Stack.Screen name="Accueil" component={Accueil} options={({route}) =>({
               headerShown:true,...headerStyle})}/>
             <Stack.Screen name="Module" component={Module} options={({route}) =>({
               headerShown:true,...headerStyle})}/>
-            <Stack.Screen name="MesCours" component={MesCours} options={({route}) =>({
+            <Stack.Screen name="MesCours" component={Login} options={({route}) =>({
               headerShown:true,...headerStyle})}/>
             <Stack.Screen name="Menu" component={Menu} options={{headerShown:false}} />
             <Stack.Screen name="Started" component={Started} options={{headerShown:false}} />
             <Stack.Screen name="DetailCategorie" component={DetailCategorie} options={({route}) =>({
-              headerShown:true,...headerStyle,title: route.params.nomPharmacie.includes('Pharmacie')? route.params.nomPharmacie :'Pharmacie ' + route.params.nomPharmacie })}/>
+              headerShown:true,...headerStyle,data: route.params.data ,title: route.params.nomdata.includes('data')? route.params.nomdata : route.params.nomdata })}/>
             
         </Stack.Navigator>
       </NavigationContainer>

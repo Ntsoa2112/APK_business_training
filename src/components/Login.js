@@ -2,7 +2,6 @@ import React from 'react'
 import { SafeAreaView,StyleSheet,View,Text,ScrollView,TouchableOpacity,Icon,TextInput,Dimensions,ImageBackground} from 'react-native'
 import { connect } from 'react-redux'
 import Profile from './user'
-import http from '../service/http'
 import axios from 'axios'
 
 const windowWidth = Dimensions.get('window').width;

@@ -2,7 +2,7 @@ import React from 'react'
 import { SafeAreaView,StyleSheet,View,Text,TouchableOpacity} from 'react-native'
 
 
-class Forum extends React.Component {
+class Mescours extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,7 +14,7 @@ class Forum extends React.Component {
   render() {
     return (
         <SafeAreaView>
-            <Text>Page Forum</Text>
+            <Text>Page Mes cours</Text>
         </SafeAreaView>
     )
   }
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
   },
   
 })
-export default Forum
+export default Mescours

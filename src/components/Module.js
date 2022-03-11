@@ -15,8 +15,8 @@ class Module extends React.Component {
   }
   
   componentDidMount(){
-    const extractUrl = this.props.route.params.routeName ? this.props.route.params.routeName : ''  
-    this.getItems(extractUrl)
+    const typeCours = this.props.route.params.routeName ? this.props.route.params.routeName : 'Module'  
+    this.getItems(typeCours)
   }
 
   getCritere =(critere)=>{
@@ -28,22 +28,52 @@ class Module extends React.Component {
   getItems =(condition)=>{
     if(condition){
       let donnee = [
-        {"id":1,"nom":"Informatique",
-        "lieu":"Cours","image":"https://img.myloview.fr/images/dessin-anime-de-reseau-informatique-700-143321403.jpg",
+        {"id":1,"nom":"Les langages pour penser et communiquer",
+        "lieu":"Analakely","image":"https://cdn.futura-sciences.com/buildsv6/images/wide1920/5/d/d/5dd96ef55a_50145169_langues-monde.jpg",
         "date_created":"2021-11-09T08:03:11.000Z","date_updated":"2021-11-11T18:15:12.000Z",
-        "longitude":"47.525228882622166","latitude":"-18.90633554528606",
+        "type":"cours","categorie":"Communication",
+        "description":"Le domaine des langages pour penser et communiquer recouvre quatre types de langage, qui sont à la fois des objets de savoir et des outils : la langue française ; les langues vivantes étrangères ou régionales ; les langages mathématiques, scientifiques et informatiques ; les langages des arts et du corps.",
         "parking":"001","bus":"192,145,178,156","arret":"Galaxy","notation":4,"contact":"0340921107"},
-        {"id":2,"nom":"Gestion","lieu":"Niv 1",
-        "image":"https://www.iena-consulting.com/wp-content/uploads/2016/11/logiciel-gestion-cloud.jpg",
+        {"id":2,"nom":"Améliorer sa communication orale",
+        "lieu":"Analakely","image":"https://nouvellesvagues.files.wordpress.com/2018/03/sans-titre1-e1520841060861.png",
+        "date_created":"2021-11-09T08:03:11.000Z","date_updated":"2021-11-11T18:15:12.000Z",
+        "type":"cours","categorie":"Communication",
+        "description":"La qualité de votre relation avec les autres dépend en grande partie de votre communication orale. La façon dont vous vous exprimez peut avoir une influence sur de multiples facettes de votre vie, aussi bien sur le plan personnel que professionnel. C'est pourquoi il parait opportun de se former à l'art de bien communiquer et ce quel que soit son âge et sa situation. ",
+        "parking":"001","bus":"192,145,178,156","arret":"Galaxy","notation":4,"contact":"0340921107"},
+        {"id":3,"nom":"La gestion et le gestionnaire","lieu":"Ambanidia",
+        "image":"https://cours-gestion.com/wp-content/uploads/2021/11/gestion-et-gestionnaire.jpg",
         "date_created":"2021-11-09T08:03:43.000Z","date_updated":"2021-11-11T18:15:18.000Z",
-        "longitude":"47.522416220844356","latitude":"-18.90530173538965","parking":"000",
+        "type":"cours","categorie":"Gestion","parking":"000",
+        "description":"Cours s’intéressant à la gestion et le gestionnaire, mais avant commençons par définir les deux termes qui constituent le sujet proposé. Qu’est ce que la gestion? Le sens du terme en général La gestion, d’une manière générale, est défini comme l’action de gérer quelque chose.",
         "bus":"192,145,178,156","arret":"Galaxy","notation":5,"contact":"0331235173"},
-        {"id":2,"nom":"Communication","lieu":"Niv 1",
-        "image":"https://www.idealco.fr/image/formation/14659.jpg?v\u003d1607954037",
+        {"id":4,"nom":"Apprendre la gestion commerciale: les bases","lieu":"Ivandry",
+        "image":"https://cours-gratuit.canada-academy.com/images/apprendre%20Gestion%20de%20produit%20en%20ligne%20%C3%A0%20distance.jpg",
         "date_created":"2021-11-09T08:03:43.000Z","date_updated":"2021-11-11T18:15:18.000Z",
-        "longitude":"47.522416220844356","latitude":"-18.90530173538965","parking":"000",
+        "type":"cours","parking":"000","categorie":"Gestion",
+        "description":"Cours sur la gestion commerciale en ligne facile à comprendre, divisé en parties suivantes: L’étude de marché L’étude d’environnement (juridique, économique, ..) L’étude de consommateur: les besoins, la motivation .. L’étude de concurrence: sa nature, part de marché L’étude de distribution: canal, répondre au question ou et comment vendre le produit?",
+        "bus":"192,145,178,156","arret":"Galaxy","notation":5,"contact":"0331235173"},
+        {"id":5,"nom":"Apprendre le langage de programmation","lieu":"Ankorahotra",
+        "image":"https://i0.wp.com/leblogducodeur.fr/wp-content/uploads/2020/01/langages-de-programmation-%C3%A0-apprendre-en-2020.png?fit=287%2C175&ssl=1",
+        "date_created":"2021-11-09T08:03:43.000Z","date_updated":"2021-11-11T18:15:18.000Z",
+        "type":"cours","parking":"000","categorie":"Informatique",
+        "description":"Si la création de programmes pour ordinateurs vous intéresse, que ce soit pour réaliser des applications mobiles, des sites internet, des jeux ou toute autre forme d'application logicielle, il vous faudra apprendre à programmer. Les programmes informatiques sont faits à partir d'un langage de programmation qui leur permet de fonctionner sur la machine sur laquelle ils sont installés, que ce soit un téléphone mobile, une machine industrielle, un ordinateur ou tout autre équipement de ce genre.",
+        "bus":"192,145,178,156","arret":"Galaxy","notation":5,"contact":"0331235173"},
+        {"id":6,"nom":"Apprendre à modéliser avec UML","lieu":"Isotry",
+        "image":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSilRIAbFEBjPolB76wTsSiLsOQwBbEwDG6BKR1AwtR4tlV-YxLOOSc6gXSCbVOMiD8pt4&usqp=CAU",
+        "date_created":"2021-11-09T08:03:43.000Z","date_updated":"2021-11-11T18:15:18.000Z",
+        "type":"cours","parking":"000","categorie":"Informatique",
+        "description":"La modélisation conceptuelle est l'étape fondatrice du processus de conception de BD?. Elle consiste à abstraire le problème réel posé pour en faire une reformulation qui trouvera une solution dans le cadre technologique d'un SGBD?.Si le modèle dominant en conception de bases de données a longtemps été le modèle E-A?, le modèle UML? se généralise de plus en plus.",
         "bus":"192,145,178,156","arret":"Galaxy","notation":5,"contact":"0331235173"}
       ]
+      console.log(condition)
+      if(condition != 'Module'){
+        let list = donnee
+        donnee = []
+        list.forEach(element => {
+          if(element.categorie == condition) donnee.push(element)
+        });
+      }
+
       this.setState({
         items:donnee, 
         isLoading:false
@@ -59,7 +89,7 @@ class Module extends React.Component {
           style={{flex:1}}
           data={this.state.items}
           keyExtractor={(item) =>{if(item){return item.id.toString()}} }
-          renderItem={({item}) => <ItemPhar pharmacie={item} navigation={this.props.navigation}/>}
+          renderItem={({item}) => <ItemPhar data={item} navigation={this.props.navigation}/>}
         />
       }
       </View>

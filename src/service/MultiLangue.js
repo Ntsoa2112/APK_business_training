@@ -22,7 +22,7 @@ var langue = (
             definition : "BUSINESS TRAINING dia fanavaozana noforonin'ny tanora mpianatra tia ny teknolojia vaovao. ",
             langue : "Safidio ny fiteny",
             condition : "Fomba fampiasa",
-            condition_test : "Ny tanjon'ity antontan-taratasy ity dia ny hamaritana ny fepetra sy ny fepetra izay amin'ny lafiny iray, izay antsoina avy eo hoe MPANOMPO, manome ny tranokala sy ny serivisy ho azon'ny mpampiasa azy, ary amin'ny lafiny iray, ny fomba izay idiran'ny mpampiasa ny tranokala sy mampiasa ny serivisy. Ny fifandraisana rehetra amin'ny tranokala dia iharan'ny fanarahana ireo fepetra ireo. Ho an'ny mpampiasa, ny fidirana tsotra amin'ny tranokalan'ny PUBLISHER amin'ity adiresy URL manaraka ity dia midika fanekena ny fepetra rehetra voalaza etsy ambany."
+            condition_test : "Ity fampiharana ity dia natao ho anao maimaimpoana mba hampiasaina amin'ny findainao. Amin'ny alàlan'ny fidirana amin'ity fifanarahana ity sy ny fidirana ary ny fampiasana ity fampiharana ity, anisan'izany ny fijerena serivisy amin'ny alàlan'izany, dia maneho ianao fa manana fahefana ara-dalàna sy zo hiditra amin'ity fifanarahana ity ianao, ary hiditra sy hampiasa ity fampiharana ity mifanaraka amin'ity fifanarahana ity; ary noho izany dia tsy mandika ny fifanarahana na adidy hafa na fepetra ara-dalàna na ara-dalàna ianao"
         },
         fr: {
             cours : "Présentation",
@@ -46,6 +46,7 @@ var langue = (
             definition : "BUSINESS TRAINING est une innovation crée par des jeune étudiant passionnés de nouvelle Téchnologie. ",
             langue : "Choisir votre langue",
             condition : "Condition d'utilisation",
+            condition_test : "Cette application est mise à votre disposition gratuitement pour utilisation sur votre appareil mobile. En adhérant à la présente Entente et en accédant et utilisant cette Application, incluant la consultation de services par le biais de celle-ci, vous représentez que vous avec la capacité légale et le droit d’adhérer à cette Entente, et d’accéder à et d’utiliser cette Application en conformité avec la présente Entente; et que vous n’êtes pas, de ce fait, en violation d’une autre entente ou obligation ou disposition légale ou règlementaire"
         },
         en: {
             cours : "Présentation",
@@ -69,6 +70,7 @@ var langue = (
             definition : "BUSINESS TRAINING is an innovation created by young students passionate about new technology.",
             langue : "Choose your language",
             condition : "Terms of use",
+            condition_test : "This application is made available to you free of charge for use on your mobile device. By entering into this Agreement and accessing and using this Application, including viewing services through it, you represent that you have the legal capacity and right to enter into this Agreement, and to access and to use this Application in accordance with this Agreement; and that you are not, therefore, in breach of any other agreement or obligation or legal or regulatory provision"
         }
     }
 )
